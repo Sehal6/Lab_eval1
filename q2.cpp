@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <map>
+
+using namespace std;
+
+void countCharacterFrequencies(const string& paragraph)
+{
+    map<char, int> frequency;
+
+    for (char ch : paragraph)
+    {
+        if (isalpha(ch) || isspace(ch) || ispunct(ch))
+        {
+            if (isalpha(ch))
+            {
+                ch = tolower(ch);
+            }
+            frequency[ch]++;
+        }
+    }
+
+    cout << "Character frequencies:"<<endl;
+    for(auto& pair:frequency)
+    {
+        cout << "'" << pair.first << "'-> " << pair.second << endl;
+    }
+}
+
+int main()
+{
+    string paragraph;
+    cout << "Enter a paragraph to get frequency count: ";
+    getline(cin, paragraph);
+    countCharacterFrequencies(paragraph);
+    return 0;
+}
+
